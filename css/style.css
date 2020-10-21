@@ -1,0 +1,32 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px;
+}
+body{
+    background-color: #22252c;
+}
+
+/* header  */
+ .main-header{
+     background-color: blue;
+ }
+.logo img{
+    width: 4rem;
+}
+
+
+
+ 
+canvas{
+    border: 1px solid black;
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+
+.main-footer{
+    background-color: rgb(72, 69, 238);
+}

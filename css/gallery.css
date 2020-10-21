@@ -1,0 +1,26 @@
+.gallery-container {
+    max-width: 1280px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #383b42;
+    padding: 40px;
+    margin: 15px;
+}
+
+.picture {
+    margin: 0 0 20px 20px;
+    width: 40px;
+    flex-basis: 17%; 
+    cursor: pointer;
+    opacity:0.67;
+}
+
+.picture:hover{
+    opacity:1;
+}
+.picture>* {
+    width: 6rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
+}
+

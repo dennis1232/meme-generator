@@ -1,12 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>meme-generator</title>
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/helpers.css">
+    <title>Meme Generator-dennis</title>
 </head>
-<body>
-    <script src="js/main.js" ></script>
+
+<body onload="onInit()">
+    <header class="main-header flex space-between">
+        <div class="logo">
+            <img src="meme-imgs/LOGO.png" alt="logo">
+        </div>
+        <nav>
+            <ul class="nav-bar flex clean-list">
+                <li><a href="#">link1</a></li>
+                <li><a href="#">link2</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="canvas-container flex">
+        <canvas id="my-canvas" height="350" width="350" ></canvas>
+        <div class="meme-controls">
+        <input type="text" name="add-txt" class="add-txt" onkeyup="onTxtChange(this)"
+            placeholder="Enter text here..." /></div>
+    </div>
+
+
+
+    <div class="gallery-container flex column  align-center">
+        <nav class="second-nav flex align-center">
+            <input id="search" class="flex-grow" type="text" placeholder="search" onkeyup="onSearch()">
+            <div class="keyWords flex-grow flex justify-flex-start align-center"></div>
+            <button class="more">More</button>
+        </nav>
+        <div class="gallery-content flex wrap justify-flex-start">
+        </div>
+    </div>
+
+
+
+
+
+    <footer class="main-footer flex column">
+        <div class="logo flex justify-center">
+            <img src="meme-imgs/LOGO.png" alt="logo">
+        </div>
+        <ul class="social-links flex clean-list logo flex justify-center">
+            <li><a href="">Link 1</a></li>
+            <li><a href="">Link 2</a></li>
+            <li><a href="">Link 3</a></li>
+        </ul>
+    </footer>
+
+    <script src="js/services/util-service.js"></script>
+    <script src="js/services/storage-service.js"></script>
+    <script src="js/services/meme-service.js"></script>
+    <script src="js/galley-controller.js"></script>
+    <script src="js/meme-controller.js"></script>
 </body>
+
 </html>
