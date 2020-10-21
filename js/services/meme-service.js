@@ -1,6 +1,9 @@
 'use strict';
 var gCanvas;
 var gCtx;
+
+
+//gImgs
 const gImgs =[
     {id:1, url: 'meme-imgs/1.jpg', keywords:[]},
     {id:2, url: 'meme-imgs/2.jpg', keywords:[]},
@@ -21,12 +24,12 @@ const gImgs =[
     {id:17, url: 'meme-imgs/17.jpg', keywords:[]},
     {id:18, url: 'meme-imgs/18.jpg', keywords:[]}
 ] 
-
+/// gmeme
 var gMeme = {
     selectedImgId: null,
     selectedLineIdx: 0,
 
-    line: [
+    lines: [
         {
             txt: 'I never eat Falafel',
             size: 20,
@@ -35,7 +38,7 @@ var gMeme = {
         }
     ]
 }
-
+///get gallery data
 function getGalleryData() {
     let imgs = gImgs
     console.log(imgs);
@@ -45,14 +48,27 @@ function getGalleryData() {
 
 
 
-
+//find img by id
 function findImgById(imgId) {
     return gImgs.find(img=>{
         return img.id === imgId
     });
 }
-    
+function userTextInput(){
+    var userInput = { txt: document.getElementById('text').value,
+    size: 20,
+    align: 'left',
+    color: 'red'
+};
+ gMeme.lines.push(userInput);
+ return userInput.txt;
+}
 
+///get meme
+function getCurrMeme() {
+    return gMeme;
+}
+///draw img on canvas
 function drawImg(imgId) {
     var img = new Image()
     let currImg = findImgById(imgId)

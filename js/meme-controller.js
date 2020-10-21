@@ -11,13 +11,26 @@ function onInit(){
     
 }
 
-drawText(gMeme.line.txt, 55, 55)
 
 
-function drawText(text, x, y) { 
-    gCtx.lineWidth = '2'
-    gCtx.font = '38px IMPACT'
+function renderGallery(){
+    const elGallery= document.querySelector('.gallery-content')
+    const gallery= getGalleryData()
+    console.log(gallery);
+    
+    const strDivs = gallery.map( img=> {
+        return `<div class="picture"  onclick="drawImg(${img.id})">
+                    <img id="${img.id}" src=${img.url} alt=${img.id}>
+                </div>`;
+    })
+    elGallery.innerHTML = strDivs.join('');
+}
+
+
+function drawText() { 
+    var text = userTextInput();
+    gCtx.font = `24px IMPACT`
     gCtx.textAlign = 'start'
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
+    gCtx.fillText(text,100 ,100)
+    gCtx.strokeText(text, 100, 100)
 }

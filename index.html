@@ -26,7 +26,7 @@
     <div class="canvas-container flex">
         <canvas id="my-canvas" height="350" width="350" ></canvas>
         <div class="meme-controls">
-        <input type="text" name="add-txt" class="add-txt" onkeyup="onTxtChange(this)"
+        <input id="text" type="text" name="add-txt" class="add-txt" onchange="drawText()"
             placeholder="Enter text here..." /></div>
     </div>
 
