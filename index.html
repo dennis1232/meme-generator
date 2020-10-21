@@ -25,10 +25,14 @@
 
     <div class="canvas-container flex">
         <canvas id="my-canvas" height="350" width="350" ></canvas>
-        <div class="meme-controls">
-        <input id="text" type="text" name="add-txt" class="add-txt" onchange="drawText()"
+        <section class="meme-controls">
+        <input id="text" type="text" name="add-txt" class="add-txt" onkeyup="changeText(this.value)"
             placeholder="Enter text here..." /></div>
-    </div>
+            <button class="btn increase-btn" onclick="onChangeFontSize(2)"><img src="/icons/increase font - icon.png" alt="increase"></button>
+            <button class="btn increase-btn" onclick="onChangeFontSize(-2)"><img src="/icons/decrease font - icon.png" alt="increase"></button>
+            <button class="btn up-line" onclick="onChangeHeightLine(5)"><img src="/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="up-line"></button>
+            <button class="btn down-line" onclick="onChangeHeightLine(-5)"><img src="/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="down-line"></button>
+        </section>
 
 
 
@@ -60,7 +64,6 @@
     <script src="js/services/util-service.js"></script>
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/meme-service.js"></script>
-    <script src="js/galley-controller.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>
 
