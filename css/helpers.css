@@ -24,7 +24,7 @@
 
 
 
-.justify-space-around {
+.space-around {
     justify-content: space-around;
 }
 
@@ -46,6 +46,9 @@
 .flex-grow {
     flex-grow: 1;
 }
+.flex-wrap{
+    flex-wrap: wrap;
+}
 
 .clean-list {
     margin: 0;
@@ -54,4 +57,7 @@
 }
 .hide{
     display: none;
+}
+.show{
+    display: flex;
 }

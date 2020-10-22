@@ -27,24 +27,7 @@ var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [
-        {
-            txt: 'I never eat Falafel',
-            size: 28,
-            align: 'center',
-            color: 'white',
-            font: 'IMPACT',
-            x: 200,
-            y: 50
-        },
-        {
-            txt: 'who likes Falafel',
-            size: 28,
-            align: 'center',
-            color: 'white',
-            font: 'IMPACT',
-            x: 200,
-            y: 340
-        }
+        _createLine(200, 50)
     ]
 }
 ///get meme
@@ -70,20 +53,32 @@ function changeLineTxt(txt, lineIdx) {
 function updateMeme(id) {
     gMeme.selectedImgId = id;
 }
-hieght
+
 
 
 //change font size
 function changeFontSize(num) {
-    if (gMeme.lines[0].size === 100 || gMeme.lines[0].size === 5) return
-    gMeme.lines[0].size += num;
-    console.log('font size', gMeme.lines[0].size);
+    if (gMeme.lines[gMeme.selectedLineIdx].size === 100 || gMeme.lines[gMeme.selectedLineIdx].size === 5) return
+    gMeme.lines[gMeme.selectedLineIdx].size += num;
+    console.log('font size', gMeme.lines[gMeme.selectedLineIdx].size);
 }
-function changeHieghtLine(num){
-    if(gMeme.lines[0].y === 0 || gMeme.lines[0].y === 350) return
-    gMeme.lines[0].y += num;
-    console.log('font size', gMeme.lines[0].y)
+function changeHieghtLine(num) {
+    if (gMeme.lines[gMeme.selectedLineIdx].y <= 25) gMeme.lines[gMeme.selectedLineIdx].y = 25
+    if (gMeme.lines[gMeme.selectedLineIdx].y >= 345) gMeme.lines[gMeme.selectedLineIdx].y = 345
+    gMeme.lines[gMeme.selectedLineIdx].y += num;
+    console.log('font size', gMeme.lines[gMeme.selectedLineIdx].y)
 
+}
+///swithLine
+function switchLine() {
+    var lineIdx = gMeme.lines;
+    var linesLength = lineIdx.length - 1;
+    if (gMeme.selectedLineIdx < linesLength) {
+        gMeme.selectedLineIdx++;
+    }
+    else if (gMeme.selectedLineIdx === linesLength) {
+        gMeme.selectedLineIdx = 0
+    }
 }
 
 
@@ -91,4 +86,49 @@ function changeHieghtLine(num){
 function getGalleryData() {
     let imgs = gImgs
     return imgs
+}
+//add line
+function addLine() {
+    if (gMeme.lines.length === 0) gMeme.lines.push(_createLine(200, 50))
+    else if (gMeme.lines.length === 1) gMeme.lines.push(_createLine(200, 340))
+    else if (gMeme.lines.length === 2) gMeme.lines.push(_createLine(200, 200))
+    else gMeme.lines.push(_createLine(70, 200))
+    console.log('line add');
+
+}
+
+function _createLine(x, y) {
+    return {
+        txt: 'Enter YourText',
+        size: 28,
+        align: 'center',
+        color: 'white',
+        stroke: 'black',
+        font: 'IMPACT',
+        x,
+        y
+    }
+}
+
+function deleteLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+    if (gMeme.selectedLineIdx > 0 && gMeme.selectedLineIdx) gMeme.selectedLineIdx -= 1;
+}
+
+function changeColor() {
+    const elFillColor= document.getElementById('fill-color').value;
+    gMeme.lines[gMeme.selectedLineIdx].color =elFillColor
+}
+function changeStrokeColor() {
+    const elStrokeColor= document.getElementById('stroke-color').value;
+    gMeme.lines[gMeme.selectedLineIdx].stroke =elStrokeColor
+}
+
+///alignment
+function alignmentText(direction){
+    gMeme.lines[gMeme.selectedLineIdx].align = direction
+}
+// font family
+function setFont(font){
+    gMeme.lines[gMeme.selectedLineIdx].font = font
 }

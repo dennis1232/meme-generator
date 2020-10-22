@@ -11,36 +11,95 @@
 </head>
 
 <body onload="onInit()">
-    <header class="main-header flex space-between">
+    <header class="main-header flex  space-around align-center ">
         <div class="logo">
             <img src="meme-imgs/LOGO.png" alt="logo">
         </div>
         <nav>
             <ul class="nav-bar flex clean-list">
-                <li><a href="#">link1</a></li>
-                <li><a href="#">link2</a></li>
+                <li><a href="#" onclick="showGallery()">gallery</a></li>
+                <li><a href="#">memes</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="canvas-container flex">
-        <canvas id="my-canvas" height="350" width="350" ></canvas>
-        <section class="meme-controls">
-        <input id="text" type="text" name="add-txt" class="add-txt" onkeyup="changeText(this.value)"
-            placeholder="Enter text here..." /></div>
-            <button class="btn increase-btn" onclick="onChangeFontSize(2)"><img src="/icons/increase font - icon.png" alt="increase"></button>
-            <button class="btn increase-btn" onclick="onChangeFontSize(-2)"><img src="/icons/decrease font - icon.png" alt="increase"></button>
-            <button class="btn up-line" onclick="onChangeHeightLine(5)"><img src="/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="up-line"></button>
-            <button class="btn down-line" onclick="onChangeHeightLine(-5)"><img src="/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="down-line"></button>
+    <div class="canvas-container hide" id="canvas-container">
+        <canvas id="my-canvas" height="450" width="450"></canvas>
+        <section class="meme-controls flex column align-center">
+            <input id="text" type="text" name="add-txt" class="add-txt" onkeyup="onChangeText(this.value)"
+                placeholder="Enter text here..." />
+            <div class="btns-control flex align-center column">
+                <div class="switch-add-trash">
+                    <button class="btn switch-line " onclick="onSwitchLine(-5)">
+                        <div class="switch-bgc flex align-center justify-center"><img
+                                src="/icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="switch"></div>
+                    </button>
+                    <button class="btn add-line" onclick="onAddLine()">
+                        <div class="add-bgc flex align-center justify-center"><img src="/icons avocado/plus.png"
+                                alt="add"></div>
+                    </button>
+                    <button class="btn delete-line" onclick="onDeleteLine()">
+                        <div class="trash-bgc flex align-center justify-center"><img src="/icons avocado/trash.png"
+                                alt="delete"></div>
+                    </button>
+
+<!-- /////// -->
+                </div>
+                <div class="txt-btn-container flex justify-center flex-wrap">
+                    <button class="btn increase-btn" onclick="onChangeFontSize(2)">
+                        <img src="/icons avocado/fontsizeup.png" alt="increase">
+                    </button>
+                    <button class="btn increase-btn" onclick="onChangeFontSize(-2)">
+                        <img src="/icons avocado/fontsizedown.png" alt="increase">
+                    </button>
+                    <button class="btn up-line" onclick="onChangeHeightLine(5)">
+                        <img src="/icons avocado/arrow-down.png" alt="">
+                    </button>
+                    <button class="btn down-line" onclick="onChangeHeightLine(-5)">
+                        <img src="/icons avocado/arrow_up.png" alt="">
+                    </button>
+                    <div class="btn fill-color" style="position:relative; display:inline-block">
+                        <button type="button" class="btn fill-color"><img src="/icons avocado/filltext.png"
+                                alt="fillColor"></button>
+                        <input type="color" id="fill-color" onchange="onChangeFillColor()" />
+                    </div>
+                    <div class="btn stroke-color" style="position:relative; display:inline-block">
+                        <button type="button" class="btn stroke-color"><img src="/icons/text stroke.png"
+                                alt="strokeColor"></button>
+                        <input type="color" id="stroke-color" onchange="onChangeStrokeColor()" />
+                    </div>
+                    <button class="btn left-align" onclick="onAlignmentText('right')">
+                        <img src="/icons/align-to-left.png" alt="">
+                    </button>
+                    <button class="btn left-align" onclick="onAlignmentText('center')">
+                        <img src="/icons/center-text-alignment.png" alt="">
+                    </button>
+                    <button class="btn left-align" onclick="onAlignmentText('left')">
+                        <img src="/icons/align-to-right.png" alt="">
+                    </button>
+                    <select name="font-select" id="" onchange="onSetFont(this.value)">
+                        <option value="IMPACT">IMPACT</option>
+                        <option value="Arial">Arial</option>
+                        <option value="monospace">Monospace</option>
+                    </select>
+                </div>
+
+
+
+                <div class="download">
+                    <a href="#" onclick="onDownload(this)" download="meme.png"><img src="/icons avocado/download.png" alt=""></a>
+                </div>
+            </div>
         </section>
+    </div>
 
 
 
-    <div class="gallery-container flex column  align-center">
+    <div class="gallery-container column  align-center" id="gallery-container">
         <nav class="second-nav flex align-center">
-            <input id="search" class="flex-grow" type="text" placeholder="search" onkeyup="onSearch()">
-            <div class="keyWords flex-grow flex justify-flex-start align-center"></div>
-            <button class="more">More</button>
+            <!-- <input id="search" class="flex-grow" type="text" placeholder="search" onkeyup="onSearch()"> -->
+            <!-- <div class="keyWords flex-grow flex justify-flex-start align-center"></div>
+            <button class="more">More</button> -->
         </nav>
         <div class="gallery-content flex wrap justify-flex-start">
         </div>
@@ -49,17 +108,31 @@
 
 
 
-
+<!-- 
     <footer class="main-footer flex column">
         <div class="logo flex justify-center">
             <img src="meme-imgs/LOGO.png" alt="logo">
         </div>
         <ul class="social-links flex clean-list logo flex justify-center">
-            <li><a href="">Link 1</a></li>
-            <li><a href="">Link 2</a></li>
-            <li><a href="">Link 3</a></li>
+            <ul class="list-inline social-buttons">
+                <li class="list-inline-item">
+                  <a href="https://github.com/dennis1232">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://www.facebook.com/dennis.nemirovski/">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://www.instagram.com/dennis.nemirovsky/">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
         </ul>
-    </footer>
+    </footer> -->
 
     <script src="js/services/util-service.js"></script>
     <script src="js/services/storage-service.js"></script>
