@@ -64,7 +64,6 @@ function drawText(txt, size, color, align, x, y, font = 'IMPACT', stroke) {
     gCtx.strokeStyle = stroke;
     gCtx.fillText(txt, x, y);
     gCtx.strokeText(txt, x, y);
-    // console.log('font',gCtx.font,'strokestyle', gCtx.strokeStyle , 'txt',gCtx.fillText(txt,x,y));
 
 }
 //font size
@@ -117,7 +116,7 @@ function onSetFont(font){
 }
 ///download 
 function onDownLoad(link){
-    const data = gCanvas.toDataURL('image/png');
+  const data = gCanvas.toDataURL('image/jpeg');
     link.href = data;
 }
 
@@ -137,3 +136,30 @@ function renderGallery() {
     elGallery.innerHTML = strDivs.join('');
 }
 
+function renderCanvas(img) {
+    gCanvas.width = img.width;
+    gCanvas.height = img.height;
+    gCtx.drawImage(img, 0, 0);
+    // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+}
+
+function downloadImg(elLink) {
+    var imgContent = gCanvas.toDataURL('image/jpeg');
+    elLink.href = imgContent
+}
+
+// The next 2 functions handle IMAGE UPLOADING to img tag from file system: 
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderMeme)
+}
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+    var reader = new FileReader();
+    
+    reader.onload = function (event) {
+        var img = new Image();
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(ev.target.files[0]);
+}

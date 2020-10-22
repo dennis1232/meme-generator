@@ -156,6 +156,7 @@ canvas {
 .fill-color {
     position: relative;
     display: inline-block;
+    
 }
 
 .fill-color input {
@@ -168,11 +169,31 @@ canvas {
     height: 100%;
 }
 .download{
-    margin-top: 20px;
+    margin-top: 10px;
 }
-.download img{
-    width: 100%;
-    height: 100%;
+.download > *:not(:last-child){
+margin-right: 10px;
+
+}
+.download-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+}
+.download-btn{
+    border-radius: 15px;
+    background-color: #8f44bb;   
+    height: 40px;
+    width: 80px;
+}
+.share-btn{
+    border-radius: 15px;
+    background-color: #1e7cd3;   
+    height: 40px;
+    width: 80px;
 }
 
 .stroke-color {

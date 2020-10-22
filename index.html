@@ -86,8 +86,14 @@
 
 
 
-                <div class="download">
-                    <a href="#" onclick="onDownload(this)" download="meme.png"><img src="icons avocado/download.png" alt=""></a>
+                <div class="download flex">
+                    <a class="download-btn" href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg"><img src="icons avocado/download.png" alt=""></a>
+                    <!-- <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" /> -->
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="share-btn" type="submit"><img src="/icons avocado/share.png" alt=""></button>
+                        <div class="share-container"></div>
+                      </form>
                 </div>
             </div>
         </section>
@@ -136,6 +142,7 @@
 
     <script src="js/services/util-service.js"></script>
     <script src="js/services/storage-service.js"></script>
+    <script src="js/services/upload-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>

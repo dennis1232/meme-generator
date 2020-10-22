@@ -93,7 +93,6 @@ function addLine() {
     else if (gMeme.lines.length === 1) gMeme.lines.push(_createLine(200, 340))
     else if (gMeme.lines.length === 2) gMeme.lines.push(_createLine(200, 200))
     else gMeme.lines.push(_createLine(70, 200))
-    console.log('line add');
 
 }
 
@@ -132,3 +131,5 @@ function alignmentText(direction){
 function setFont(font){
     gMeme.lines[gMeme.selectedLineIdx].font = font
 }
+
+
