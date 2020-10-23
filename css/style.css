@@ -175,15 +175,11 @@ canvas {
 margin-right: 10px;
 
 }
-.download-btn {
+
+.download-btn{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 50%;
-    margin: 0 auto;
-}
-.download-btn{
     border-radius: 15px;
     background-color: #8f44bb;   
     height: 40px;
@@ -214,6 +210,12 @@ margin-right: 10px;
 .gallery-container{
     margin:0 auto;
     justify-content: center;
+}
+.up-line{
+    background-color: rgb(101, 193, 216);
+}
+.down-line{
+    background-color: tomato;
 }
 
 

@@ -36,7 +36,6 @@ function drawImg(imgUrl) {
 
 ///change text
 function onChangeText(value) {
-    console.log(value);
     var currIdx = currMeme.selectedLineIdx;
     changeLineTxt(value, currIdx);
     renderMeme()
@@ -46,7 +45,6 @@ function onChangeText(value) {
 function renderTxt(txt) {
     txt.forEach(line => {
         drawText(line.txt, line.size, line.color, line.align, line.x, line.y, line.font, line.stroke)
-        console.log('txt', line.txt);
 
     });
 }
@@ -79,6 +77,10 @@ function onChangeHeightLine(num) {
 ///line switch
 function onSwitchLine() {
     switchLine();
+    renderMeme()
+    drawRect();
+    drawRect();
+    drawRect();
 }
 
 ///line add
@@ -140,7 +142,6 @@ function renderCanvas(img) {
     gCanvas.width = img.width;
     gCanvas.height = img.height;
     gCtx.drawImage(img, 0, 0);
-    // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 }
 
 function downloadImg(elLink) {
@@ -162,4 +163,15 @@ function loadImageFromInput(ev, onImageReady) {
         img.src = event.target.result;
     }
     reader.readAsDataURL(ev.target.files[0]);
+}
+
+function drawRect(){
+  
+    var x = currMeme.lines[currMeme.selectedLineIdx].x
+    var y = currMeme.lines[currMeme.selectedLineIdx].y
+    var hight =currMeme.lines[currMeme.selectedLineIdx].size
+    gCtx.rect( x-80 ,y -hight, gCtx.measureText(currMeme.lines[currMeme.selectedLineIdx].txt).width , hight)
+    gCtx.strokeStyle = 'red'
+    gCtx.stroke()
+
 }

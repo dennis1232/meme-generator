@@ -66,7 +66,6 @@ function changeHieghtLine(num) {
     if (gMeme.lines[gMeme.selectedLineIdx].y <= 25) gMeme.lines[gMeme.selectedLineIdx].y = 25
     if (gMeme.lines[gMeme.selectedLineIdx].y >= 345) gMeme.lines[gMeme.selectedLineIdx].y = 345
     gMeme.lines[gMeme.selectedLineIdx].y += num;
-    console.log('font size', gMeme.lines[gMeme.selectedLineIdx].y)
 
 }
 ///swithLine
@@ -79,6 +78,7 @@ function switchLine() {
     else if (gMeme.selectedLineIdx === linesLength) {
         gMeme.selectedLineIdx = 0
     }
+
 }
 
 
