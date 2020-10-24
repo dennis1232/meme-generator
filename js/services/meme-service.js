@@ -30,7 +30,7 @@ var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [
-        _createLine(200, 50)
+        _createLine(250, 50)
     ]
 }
 ///get meme
@@ -104,9 +104,9 @@ function getMemesFromStorage() {
 }
 //add line
 function addLine() {
-    if (gMeme.lines.length === 0) gMeme.lines.push(_createLine(200, 50))
-    else if (gMeme.lines.length === 1) gMeme.lines.push(_createLine(200, 340))
-    else if (gMeme.lines.length === 2) gMeme.lines.push(_createLine(200, 200))
+    if (gMeme.lines.length === 0) gMeme.lines.push(_createLine(250, 50))
+    else if (gMeme.lines.length === 1) gMeme.lines.push(_createLine(250, 450))
+    else if (gMeme.lines.length === 2) gMeme.lines.push(_createLine(250, 225))
     else gMeme.lines.push(_createLine(70, 200))
 
 }

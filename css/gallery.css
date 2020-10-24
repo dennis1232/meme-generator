@@ -11,8 +11,8 @@
 
 .picture {
     margin: 10px;
-    width: 40px;
-    flex-basis: 17%; 
+    /* width: 40px; */
+    flex-basis: 26%; 
     cursor: pointer;
     opacity:0.67;
 }
