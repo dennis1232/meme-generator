@@ -2,6 +2,7 @@
 
 var gCanvas;
 var gCtx;
+
 var currMeme = getMeme()
 
 
@@ -10,6 +11,7 @@ function onInit() {
     gCtx = gCanvas.getContext('2d');
     renderGallery()
     renderMeme()
+    renderSavedMemes()
 
 }
 function renderMeme() {
@@ -74,6 +76,10 @@ function onChangeHeightLine(num) {
     changeHieghtLine(num);
     renderMeme();
 }
+function onChangeXHeightLine(num) {
+    changeXHieghtLine(num);
+    renderMeme();
+}
 ///line switch
 function onSwitchLine() {
     switchLine();
@@ -116,24 +122,42 @@ function onSetFont(font){
     setFont(font);
     renderMeme()
 }
-///download 
-function onDownLoad(link){
-  const data = gCanvas.toDataURL('image/jpeg');
-    link.href = data;
+
+function onSaveMeme(){
+ saveMeme()
+ renderSavedMemes()
+}
+function getCanvas(){
+    return gCanvas;
 }
 
 
 
 
+function renderSavedMemes() {
+    const elSavedMemes = document.querySelector('.saved-memes')
+    let savedMemes= getMemesFromStorage()
+
+    const strDivs = savedMemes.map(savedMeme => {
+        return `<div class="picture">
+        <img src = ${savedMeme}>
+         </div>`; 
+     
+    });
+    elSavedMemes.innerHTML = strDivs.join('');
+}
 
 function renderGallery() {
     const elGallery = document.querySelector('.gallery-content')
+ 
     const gallery = getGalleryData()
 
     const strDivs = gallery.map(img => {
         return `<div class="picture" onclick="onUpdateMeme(${img.id})">
      <img id="${img.id}" src=${img.url} alt=${img.id}>
-      </div>`;
+      </div>`; 
+    
+    
     });
     elGallery.innerHTML = strDivs.join('');
 }
@@ -175,3 +199,21 @@ function drawRect(){
     gCtx.stroke()
 
 }
+function saveMeme(){
+    var canvas = getCanvas();
+    console.log(canvas);
+    
+    var imgContent = canvas.toDataURL('image/jpeg');
+    gMemes.push(imgContent);
+    saveToStorage(memesDB,gMemes);
+    console.log(gMemes);
+    
+
+}
+
+
+
+ function onRemoveMemes(){
+     deleteFromStorage(memesDB);
+   onInit()
+ }

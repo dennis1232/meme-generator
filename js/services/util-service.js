@@ -1,20 +1,26 @@
 'use strict';
-function toggleElement(el, className) {
-    el.classList.toggle(className);
-}
+var elCanvas = document.getElementById("canvas-container");
+var elGallery = document.getElementById("gallery-container");
+var elSavedMemes = document.getElementById("saved-memes")
+
 function showCanvas() {
-    var elCanvas = document.getElementById("canvas-container");
     elCanvas.classList.add("show");
-    elCanvas.classList.remove("hide")
+    elCanvas.classList.remove("hide");
+    elGallery.classList.add("hide");
 }
 function HideGallery() {
-    var elGallery = document.getElementById("gallery-container");
     elGallery.classList.add("hide");
 }
 function showGallery() {
-    var elGallery = document.getElementById("gallery-container");
     elGallery.classList.remove("hide");
-    var elCanvas = document.getElementById("canvas-container");
-    elCanvas.classList.add("hide")
+    elCanvas.classList.add("hide");
+    elCanvas.classList.remove("show");
+    elSavedMemes.classList.add("hide")
+    elSavedMemes.classList.remove("show")
+}
+function showSavedMemes(){
+    elCanvas.classList.add("hide");
     elCanvas.classList.remove("show")
+    elGallery.classList.add("hide");
+    elSavedMemes.classList.add("show");
 }

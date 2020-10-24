@@ -11,6 +11,7 @@
 </head>
 
 <body onload="onInit()">
+
     <header class="main-header flex  space-around align-center ">
         <div class="logo">
             <img src="meme-imgs/LOGO.png" alt="logo">
@@ -18,8 +19,9 @@
         <nav>
             <ul class="nav-bar flex clean-list">
                 <li><a href="#" onclick="showGallery()">gallery</a></li>
-                <li><a href="#">memes</a></li>
+                <li><a href="#" onclick = "showSavedMemes()">memes</a></li>
             </ul>
+            <button class="nav-btn" onclick="toggleMenu()">☰</button>
         </nav>
     </header>
 
@@ -52,10 +54,16 @@
                     <button class="btn increase-btn" onclick="onChangeFontSize(-2)">
                         <img src="icons avocado/fontsizedown.png" alt="increase">
                     </button>
+                    <button class="btn left-line" onclick="onChangeXHeightLine(-5)">
+                        <img src="icons avocado/arrow-down.png" alt="">
+                    </button>
                     <button class="btn up-line" onclick="onChangeHeightLine(5)">
                         <img src="icons avocado/arrow-down.png" alt="">
                     </button>
                     <button class="btn down-line" onclick="onChangeHeightLine(-5)">
+                        <img src="icons avocado/arrow_up.png" alt="">
+                    </button>
+                    <button class="btn right-line" onclick="onChangeXHeightLine(5)">
                         <img src="icons avocado/arrow_up.png" alt="">
                     </button>
                     <div class="btn fill-color" style="position:relative; display:inline-block">
@@ -93,7 +101,8 @@
                         <input name="img" id="imgData" type="hidden" />
                         <button class="share-btn" type="submit"><img src="icons avocado/share.png" alt=""></button>
                         <div class="share-container"></div>
-                      </form>
+                    </form>
+                    <button class="btn save-btn" class="save" onclick="onSaveMeme()"><img src="icons/save.png" alt=""></button>
                 </div>
             </div>
         </section>
@@ -107,38 +116,23 @@
             <!-- <div class="keyWords flex-grow flex justify-flex-start align-center"></div>
             <button class="more">More</button> -->
         </nav>
-        <div class="gallery-content flex wrap justify-flex-start">
+        <div class="gallery-content flex wrap ">
         </div>
     </div>
+    <section class="saved-memes hide" id="saved-memes">
+    </section>
+    <!-- <button class="btn remove-memes-btn show" onclick="onRemoveMemes()"><img src="icons avocado/trash.png" alt=""></button> -->
 
 
 
 
-<!-- 
+
     <footer class="main-footer flex column">
         <div class="logo flex justify-center">
             <img src="meme-imgs/LOGO.png" alt="logo">
         </div>
-        <ul class="social-links flex clean-list logo flex justify-center">
-            <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                  <a href="https://github.com/dennis1232">
-                    <i class="fa fa-github"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="https://www.facebook.com/dennis.nemirovski/">
-                    <i class="fa fa-facebook"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="https://www.instagram.com/dennis.nemirovsky/">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-        </ul>
-    </footer> -->
+        <small>Made by Dennis Nemirovsky ©</small>
+    </footer>
 
     <script src="js/services/util-service.js"></script>
     <script src="js/services/storage-service.js"></script>

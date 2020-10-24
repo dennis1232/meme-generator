@@ -1,4 +1,7 @@
 'use strict';
+const memesDB ='memes'
+var gMemes =[];
+
 
 
 //gImgs
@@ -68,6 +71,12 @@ function changeHieghtLine(num) {
     gMeme.lines[gMeme.selectedLineIdx].y += num;
 
 }
+function changeXHieghtLine(num) {
+    if (gMeme.lines[gMeme.selectedLineIdx].x <= 25) gMeme.lines[gMeme.selectedLineIdx].x = 25
+    if (gMeme.lines[gMeme.selectedLineIdx].x >= 345) gMeme.lines[gMeme.selectedLineIdx].x = 345
+    gMeme.lines[gMeme.selectedLineIdx].x += num;
+
+}
 ///swithLine
 function switchLine() {
     var lineIdx = gMeme.lines;
@@ -87,6 +96,12 @@ function getGalleryData() {
     let imgs = gImgs
     return imgs
 }
+
+///saved memes
+function getMemesFromStorage() {
+    let savedMemes = loadFromStorage(memesDB);
+    return savedMemes
+}
 //add line
 function addLine() {
     if (gMeme.lines.length === 0) gMeme.lines.push(_createLine(200, 50))
@@ -98,7 +113,7 @@ function addLine() {
 
 function _createLine(x, y) {
     return {
-        txt: 'Enter YourText',
+        txt: 'Enter Your Text',
         size: 28,
         align: 'center',
         color: 'white',
@@ -132,4 +147,15 @@ function setFont(font){
     gMeme.lines[gMeme.selectedLineIdx].font = font
 }
 
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
+}
 
+function saveMeme(){
+    var canvas = getCanvas();
+    var imgContent = canvas.toDataURL('image/jpeg');
+    gMemes.push(imgContent);
+    saveToStorage(memesDB,gMemes);
+    
+
+}
